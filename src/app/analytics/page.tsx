@@ -39,6 +39,15 @@ const Page = async () => {
     for (let j = 0; j < day.events.length; j++) {
       const event = day.events[j];
       if (!event) continue;
+
+      const key = Object.keys(event)[0]!; //
+      const value = Object.values(event)[0]!;
+
+      const parsedKey = JSON.parse(key);
+      const country = parsedKey?.country;
+
+      if (country) {
+      }
     }
   }
 
