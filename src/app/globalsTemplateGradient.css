@@ -1,0 +1,68 @@
+/* Import Tailwind CSS base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom CSS variables */
+/* root is the default selector for the document */
+/* it is used to define global CSS variables which are naturally inherited by all elements */
+/* These variables are used to define the foreground and background colors */
+/* as well as the start and end colors for the background gradient */
+/* The values are set to default values for light mode */
+/* The values are overridden for dark mode using a media query */
+
+:root {
+  --foreground-rgb: 0, 0, 0; /* Default Foreground color in RGB */
+  --background-start-rgb: 169, 169, 179; /* Light color in RGB */
+  --background-middle1-rgb: 179, 179, 192; /* Mid-tone color in RGB */
+  --background-middle2-rgb: 189, 189, 201; /* Mid-tone color in RGB */
+  --background-middle3-rgb: 202, 202, 208; /* Mid-tone color in RGB */
+  --background-middle4-rgb: 224, 224, 229; /* Mid-tone color in RGB */
+  --background-end-rgb: 255, 255, 255; /* End color in RGB */
+}
+
+/* Media query for dark color scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255; /* Foreground color in RGB for dark mode */
+    --background-start-rgb: 35, 36, 37; /* Dark color in RGB */
+    --background-middle1-rgb: 30, 31, 32; /* Mid-tone color in RGB */
+    --background-middle2-rgb: 28, 29, 30; /* Mid-tone color in RGB */
+    --background-middle3-rgb: 20, 21, 21; /* Mid-tone color in RGB */
+    --background-middle4-rgb: 18, 19, 19; /* Mid-tone color in RGB */
+    --background-end-rgb: 17, 18, 18; /* End color in RGB */
+  }
+}
+
+/* Utility class for balancing text */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance; /* Apply text balancing */
+  }
+}
+
+@keyframes force-repaint {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.01);
+  }
+}
+
+body {
+  color: rgb(
+    var(--foreground-rgb)
+  ); /* Set text color using custom CSS variable */
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-middle1-rgb)),
+    rgb(var(--background-middle2-rgb)),
+    rgb(var(--background-middle3-rgb)),
+    rgb(var(--background-middle4-rgb)),
+    rgb(var(--background-end-rgb))
+  ); /* Set background gradient using custom CSS variables */
+  animation: force-repaint 0.01s ease-in-out;
+  animation-iteration-count: 1;
+}
